@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --font-color: beige;
+    --background: #121212;
+}
+
+
+body {
+    font-family: 'Satoshi', sans-serif;
+    background-color: var(--background);
+    color: var(--font-color);
+    font-size: 1em;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+Link {
+    text-decoration: none;
+    color: var(--font-color);
+    
+    &:hover {
+        color: #6f8848;
+        transition: all .3s;
+    }
+}
+
+ul {
+    border: 1px solid yellow;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
