@@ -1,22 +1,38 @@
 import Modal from "../components/Modal";
 import TopBar from "../components/TopBar";
 import Delete from "/delete.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Homepage = () => {
-
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState([]);
-
+  const [formData, setFormData] = useState(() => {
+    const savedData = localStorage.getItem("formData");
+    return savedData ? JSON.parse(savedData) : [];
+  });
+  
   const handleModalView = () => {
     setIsModalOpen(!isModalOpen);
   };
-
+  
   const handleFormSubmit = (data) => {
     setFormData([...formData, data]);
     setIsModalOpen(false);
   };
+  
+  
+  const handleRemoveCard = (index) => {
+    const updatedData = [...formData];
+    updatedData.splice(index, 1);
+    
+    setFormData(updatedData);
+  };
 
+
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
+  
   return (
     <>
       <section className="w-full flex flex-col justify-center items-center gap-6">
@@ -25,7 +41,6 @@ const Homepage = () => {
         </div>
         {isModalOpen && <Modal handleFormSubmit={handleFormSubmit} />}
 
-        
         {formData.map((item, index) => (
           <div
             id="expenseCard"
@@ -34,12 +49,11 @@ const Homepage = () => {
           >
             <h3>{item.expense}</h3>
             <h3>${item.amount}</h3>
-            <button type="button">
+            <button type="button" onClick={() => handleRemoveCard(index)}>
               <img src={Delete} className="w-4" />
             </button>
           </div>
         ))}
-
       </section>
     </>
   );
