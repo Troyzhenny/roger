@@ -9,19 +9,21 @@ const Modal = ({ handleFormSubmit }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     
-    if(expense && amount) {
-      handleFormSubmit({expense, amount});
-
-      setExpense('');
-      setAmount('');
+    if(!expense || !amount) {
+      alert('Please fill out the form!');
+      return;
     }
 
-  }
+    handleFormSubmit({ expense, amount: parseFloat(amount) });
+    setExpense('');
+    setAmount('');
+  };
 
   return (
     <>
       <div className="rounded bg-zinc-950 w-fit border border-green-500 z-10 absolute">
         <form
+        id="data"
           onSubmit={onSubmit}
           className="flex flex-col w-80 min-h-80 justify-center items-center"
         >
@@ -53,7 +55,7 @@ const Modal = ({ handleFormSubmit }) => {
 
           <br />
 
-          <button type="submit" onClick={handleFormSubmit}>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </>
