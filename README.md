@@ -1,8 +1,67 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Roger | Expense tracker
 
-Currently, two official plugins are available:
+Roger is an expense tracker first, but also has a functional calender and task tracker. This app is for anyone who wants to track their expense for free on their personal pc, no sign up!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## 🚀 About Me
+I'm a frontend developer, experienced with graphic design.
+learning react and javascript.
+
+
+## Features
+
+- Track your expenses
+- Not mobile friendly yet
+
+
+## Tech Stack
+
+**Client:** React, TailwindCSS, LocalStorageAPI
+
+## Roadmap
+
+- Add a calender feature
+
+- Add task tracking feature
+
+- Make mobile friendly
+
+- UI/UX update
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Troyzhenny/roger
+```
+
+Go to the project directory
+
+```bash
+  cd roger
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+Build the project
+
+```bash
+  npm run build
+```
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
