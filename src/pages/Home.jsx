@@ -1,28 +1,45 @@
 import Modal from "../components/Modal";
 import TopBar from "../components/TopBar";
-import Delete from '/delete.svg';
+import Delete from "/delete.svg";
+import { useState } from "react";
 
 const Homepage = () => {
 
-  let expense;
-  let amount;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState([]);
+
+  const handleModalView = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const handleFormSubmit = (data) => {
+    setFormData([...formData, data]);
+    setIsModalOpen(false);
+  };
 
   return (
     <>
-      <section className="w-full flex flex-col justify-center items-center">
+      <section className="w-full flex flex-col justify-center items-center gap-6">
         <div className="right-0 top-0 absolute">
-          <TopBar />
+          <TopBar handleModalView={handleModalView} />
         </div>
+        {isModalOpen && <Modal handleFormSubmit={handleFormSubmit} />}
 
-        <Modal />
+        
+        {formData.map((item, index) => (
+          <div
+            id="expenseCard"
+            key={index}
+            className="flex border border-amber-100 border-l-4 border-l-green-500 rounded justify-between px-4 items-center w-5/12 h-10"
+          >
+            <h3>{item.expense}</h3>
+            <h3>${item.amount}</h3>
+            <button type="button">
+              <img src={Delete} className="w-4" />
+            </button>
+          </div>
+        ))}
 
-        <div>
-          <h3>{expense}</h3>
-          <h3>{amount}</h3>
-          <button type="button">
-            <img src={Delete} />
-          </button>
-        </div>
       </section>
     </>
   );
